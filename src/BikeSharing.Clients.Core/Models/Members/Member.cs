@@ -24,6 +24,8 @@ namespace BikeSharing.Clients.Core.Models.Members
         public string Gender { get; set; }
         public string ImagePath { get; set; }
         public string Smiley { get; set; }
+
+        public string Attendence { get; set; }
     }
 
         public class Member

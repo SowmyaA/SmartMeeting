@@ -156,9 +156,9 @@ namespace BikeSharing.Clients.Core.ViewModels
             }
         }
 
-        private ObservableCollection<Member> _members = new ObservableCollection<Member>();
+        private ObservableCollection<MeetingMembers> _members = new ObservableCollection<MeetingMembers>();
 
-        public ObservableCollection<Member> Members
+        public ObservableCollection<MeetingMembers> Members
         {
             get
             {
@@ -244,7 +244,7 @@ namespace BikeSharing.Clients.Core.ViewModels
             };
 
         }
-        
+
         public override async Task InitializeAsync(object navigationData)
         {
             CurrentDate = DateTime.Now;
@@ -256,7 +256,7 @@ namespace BikeSharing.Clients.Core.ViewModels
                 var weather = _weatherService.GetWeatherInfoAsync();
                 var events = _eventsService.GetEvents();
                 var suggestions = _ridesService.GetSuggestions();
-                
+
 
                 var tasks = new List<Task> { weather, events, suggestions, members };
                 while (tasks.Count > 0)
@@ -294,7 +294,7 @@ namespace BikeSharing.Clients.Core.ViewModels
                             Invities = invitiesObject.Length.ToString();
                             //Attendees
                             Attendees[] attendeesObject = memberResults.MeetingAttendees;
-                            Joined = attendeesObject.Length.ToString();                           
+                            Joined = attendeesObject.Length.ToString();
                             //New or Introduers
                             HashSet<string> PersonIds = new HashSet<string>(invitiesObject.Select(s => s.PersonId));
                             var results = attendeesObject.Where(m => !PersonIds.Contains(m.PersonId));
@@ -302,8 +302,70 @@ namespace BikeSharing.Clients.Core.ViewModels
                             //Not joined
                             int attendees_invited = Math.Abs(attendeesObject.Length - results.Count());
                             NotJoined = Math.Abs(invitiesObject.Length - attendees_invited).ToString();
+                            //Members
+                            Members = new ObservableCollection<MeetingMembers>();
+                            foreach (Attendees person in attendeesObject)
+                            {
+                                MeetingMembers meetingmembers = new MeetingMembers();
+                                if (person.EmpName.ToString().Trim()=="NaN")
+                                    meetingmembers.EmpName = "NEW";
+                                else
+                                {
+                                    meetingmembers.EmpName = person.EmpName;
+                                }
+                                meetingmembers.PersonId = person.PersonId;
+                                if (person.Department.ToString().Trim() == "NaN")
+                                    meetingmembers.Department = "NEW";
+                                else { meetingmembers.Department = person.Department; }
 
-                            //  var diff = attendeesObject.Except(invitiesObject);
+                                meetingmembers.Gender = person.Gender;
+
+                                if (person.Smile == "Sad")
+                                    meetingmembers.Smiley = "Smiley1.png";
+                                else if (person.Smile == "Smile")
+                                { meetingmembers.Smiley = "Smiley.png"; }
+                                else { meetingmembers.Smiley = "Smiley.png"; }
+
+                                meetingmembers.ImagePath = GlobalSettings.MemberEndpoint.ToString() + person.BlobName;
+
+                                meetingmembers.Attendence = "Off.png";
+
+                                Members.Add(meetingmembers);
+                            }
+                            HashSet<string> Id_Invitees = new HashSet<string>(invitiesObject.Select(s => s.PersonId));
+                            var notPresent = attendeesObject.Where(m => !Id_Invitees.Contains(m.PersonId));
+                            foreach (var person in notPresent)
+                            {
+                                if (person.EmpName.ToString().Trim() != "NaN")
+                                {
+                                    MeetingMembers meetingmembers = new MeetingMembers();
+                                    if (person.EmpName.ToString().Trim() == "NaN")
+                                        meetingmembers.EmpName = "NEW";
+                                    else
+                                    {
+                                        meetingmembers.EmpName = person.EmpName;
+                                    }
+                                    meetingmembers.PersonId = person.PersonId;
+                                    if (person.Department.ToString().Trim() == "NaN")
+                                        meetingmembers.Department = "NEW";
+                                    else { meetingmembers.Department = person.Department; }
+
+                                    meetingmembers.Gender = person.Gender;
+
+                                    if (person.Smile == "Sad")
+                                        meetingmembers.Smiley = "Smiley1.png";
+                                    else if (person.Smile == "Smile")
+                                    { meetingmembers.Smiley = "Smiley.png"; }
+                                    else { meetingmembers.Smiley = "Smiley.png"; }
+
+                                    meetingmembers.ImagePath = GlobalSettings.MemberEndpoint.ToString() + person.BlobName;
+
+                                    meetingmembers.Attendence = "On.png";
+
+                                    Members.Add(meetingmembers);
+                                }
+                            }
+
 
                             //  Members = new ObservableCollection<Member>(memberResults);
                         }
@@ -351,6 +413,6 @@ namespace BikeSharing.Clients.Core.ViewModels
             }
         }
 
-        
+
     }
 }

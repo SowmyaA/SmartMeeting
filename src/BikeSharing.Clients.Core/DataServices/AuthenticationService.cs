@@ -34,11 +34,11 @@ namespace BikeSharing.Clients.Core.DataServices
 
               AuthenticationResponse authenticationInfo = await _requestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
               Settings.UserId = authenticationInfo.UserId;
-              Settings.ProfileId = authenticationInfo.ProfileId;
-            Settings.AccessToken = authenticationInfo.AccessToken;
+             Settings.ProfileId = authenticationInfo.ProfileId;
+           Settings.AccessToken = authenticationInfo.AccessToken;
           //  Settings.UserId = 1;
-          //  Settings.ProfileId = 1;
-          //  Settings.AccessToken = "1";
+         //   Settings.ProfileId = 1;
+         //   Settings.AccessToken = "1";
 
             return true;
         }

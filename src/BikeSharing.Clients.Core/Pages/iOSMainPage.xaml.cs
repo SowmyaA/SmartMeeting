@@ -98,10 +98,10 @@ namespace BikeSharing.Clients.Core.Pages
             {
                 icon = "menu_ic_profile";
             }
-            else if (page is MyRidesPage)
-            {
-                icon = "menu_ic_bike";
-            }
+            //else if (page is MyRidesPage)
+            //{
+            //    icon = "menu_ic_bike";
+            //}
             else if (page is ReportIncidentPage)
             {
                 icon = "menu_ic_report_incident";

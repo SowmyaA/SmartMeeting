@@ -159,10 +159,13 @@
                    Style="{StaticResource HeaderLabelStyle}" />
             <Label Text="{Binding Location}"
                    Style="{StaticResource HeaderLabelStyle}" />
-            <Label Text="Team Meet"
+            <StackLayout Orientation="Horizontal">
+            <Label Text="DELL "
                      Style="{StaticResource TempLabelStyle}" />
-
-
+            <Image Source="labelicon.png" />
+            <Label Text=" I"
+                     Style="{StaticResource TempLabelStyle}" />
+            </StackLayout>
             <!--<Label Text="{Binding Temp, StringFormat='{0}°F'}"                            
                                Style="{StaticResource TempLabelStyle}" />-->
           </StackLayout>
@@ -211,7 +214,7 @@
               <Image Source="Blue.png" />
               <StackLayout Padding="5, 25, 5, 5">
                 <!-- Anything else you want to put on top of the background just use opacity wisely-->
-                <Label Text="Invities" VerticalTextAlignment="Center" HorizontalOptions = "Center" Style="{StaticResource EventLabelStyle}"/>
+                <Label Text="Members" VerticalTextAlignment="Center" HorizontalOptions = "Center" Style="{StaticResource EventLabelStyle}"/>
                 <Label Text="{Binding Invities}" VerticalTextAlignment="Center" HorizontalOptions="Center" Style="{StaticResource EventTitleLabelStyle}"  />
               </StackLayout>
             </Grid>
@@ -219,7 +222,7 @@
               <Image Source="Green.png" />
               <StackLayout Padding="0, 25, 0, 5">
                 <!-- Anything else you want to put on top of the background just use opacity wisely-->
-                <Label Text="Joined" VerticalTextAlignment="Center" HorizontalOptions = "Center" Style="{StaticResource EventLabelStyle}"/>
+                <Label Text="In" VerticalTextAlignment="Center" HorizontalOptions = "Center" Style="{StaticResource EventLabelStyle}"/>
                 <Label Text="{Binding Joined}" VerticalTextAlignment="Center" HorizontalOptions="Center" Style="{StaticResource EventTitleLabelStyle}"  />
               </StackLayout>
             </Grid>
@@ -227,7 +230,7 @@
               <Image Source="Red.png"  />
               <StackLayout Padding="0, 25, 0, 0">
                 <!-- Anything else you want to put on top of the background just use opacity wisely-->
-                <Label Text="Not Joined" Style="{StaticResource EventLabelStyle}" VerticalTextAlignment="Center" HorizontalOptions = "Center"/>
+                <Label Text="No Show" Style="{StaticResource EventLabelStyle}" VerticalTextAlignment="Center" HorizontalOptions = "Center"/>
                 <Label Text="{Binding NotJoined}" VerticalTextAlignment="Center" HorizontalOptions="Center" Style="{StaticResource EventTitleLabelStyle}"  />
               </StackLayout>
             </Grid>
@@ -250,7 +253,7 @@
               Grid.Row="2"
               Margin="5, 0"
               Spacing="5"
-              ItemsSource="{Binding Members}"
+              ItemsSource="{Binding Events}"
               SelectedCommand="{Binding ShowEventCommand}"
               ListOrientation="Horizontal">
             <ctrl:StackedList.ItemTemplate>
@@ -299,11 +302,11 @@
                       <Image Source="{Binding ImagePath}" WidthRequest="170" HeightRequest="100"/>
                     </StackLayout>
 
-                    <Label Text="{Binding EmpName}"
+                    <Label Text="{Binding Name}"
                            Style="{StaticResource EventSubtitleLabelStyle}" />
                     <StackLayout Orientation="Horizontal">
                       <Image Source="{Binding Attendence}" />
-                      <Image Source="{Binding Smiley}" />
+                      <Image Source="{Binding Emoction}" />
                     </StackLayout>
 
                     <!--<Label Text="{Binding Venue.Name}"
@@ -318,82 +321,14 @@
               </DataTemplate>
             </ctrl:StackedList.ItemTemplate>
           </ctrl:StackedList>
-          <!--<BoxView
-              Grid.Row="3"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="Center"
-              Color="{StaticResource GrayColor}"
-              Opacity="0.22"
-              HeightRequest="1" />-->
+
           <Label
-              Grid.Row="3"
-              Text="Meeting Time Trends"
-              VerticalOptions="Center"
-              Style="{StaticResource SectionLabelStyle}" />
-          <!--Trends-->
+            Grid.Row="3"
+            Text="Emoticons"
+            VerticalOptions="Center"
+            Style="{StaticResource SectionLabelStyle}" />
+          <!--Emoticon-->
           <StackLayout Grid.Row="4">
-            <StackLayout.HeightRequest>
-              <OnPlatform
-                  x:TypeArguments="x:Double"
-                  Android="405"
-                  iOS="285"
-                  WinPhone="405"/>
-            </StackLayout.HeightRequest>
-            <!--Trends-->
-            <chart:SfChart VerticalOptions="FillAndExpand">
-              <chart:SfChart.PrimaryAxis>
-
-                <chart:CategoryAxis>
-
-                  <chart:CategoryAxis.Title>
-
-                    <chart:ChartAxisTitle Text="Time (in Minutes)"> </chart:ChartAxisTitle>
-
-                  </chart:CategoryAxis.Title>
-
-                </chart:CategoryAxis>
-
-              </chart:SfChart.PrimaryAxis>
-
-              <chart:SfChart.SecondaryAxis>
-
-                <chart:NumericalAxis>
-
-                  <chart:NumericalAxis.Title>
-
-                    <chart:ChartAxisTitle Text="Age Range"></chart:ChartAxisTitle>
-
-                  </chart:NumericalAxis.Title>
-
-                </chart:NumericalAxis>
-
-              </chart:SfChart.SecondaryAxis>
-
-              <!--Legends-->
-              <!--<chart:SfChart.Legend>
-
-                  <chart:ChartLegend />
-
-                </chart:SfChart.Legend>-->
-
-              <chart:SfChart.Series>
-
-
-                <chart:RangeColumnSeries  ItemsSource="{Binding Data}" XBindingPath="EntryTime" High="Age2" Low="Age1">
-
-                </chart:RangeColumnSeries >
-
-              </chart:SfChart.Series>
-
-            </chart:SfChart>            
-          </StackLayout>
-          <Label
-             Grid.Row="5"
-             Text="Meeting Room Usage"
-             VerticalOptions="Center"
-             Style="{StaticResource SectionLabelStyle}" />
-          <!--Usage-->
-          <StackLayout Grid.Row="6">
             <StackLayout.HeightRequest>
               <OnPlatform
                   x:TypeArguments="x:Double"
@@ -408,7 +343,7 @@
 
                   <chart:CategoryAxis.Title>
 
-                    <chart:ChartAxisTitle Text="Usage Type"> </chart:ChartAxisTitle>
+                    <chart:ChartAxisTitle Text="Emoticons"> </chart:ChartAxisTitle>
 
                   </chart:CategoryAxis.Title>
 
@@ -469,6 +404,72 @@
 
             </chart:SfChart>
           </StackLayout>
+
+          <!-- Time Trends -->
+          
+          <!--<Label
+              Grid.Row="5"
+              Text="Time Trends"
+              VerticalOptions="Center"
+              Style="{StaticResource SectionLabelStyle}" />
+          --><!--Trends--><!--
+          <StackLayout Grid.Row="6">
+            <StackLayout.HeightRequest>
+              <OnPlatform
+                  x:TypeArguments="x:Double"
+                  Android="405"
+                  iOS="285"
+                  WinPhone="405"/>
+            </StackLayout.HeightRequest>
+            --><!--Trends--><!--
+            <chart:SfChart VerticalOptions="FillAndExpand">
+              <chart:SfChart.PrimaryAxis>
+
+                <chart:CategoryAxis>
+
+                  <chart:CategoryAxis.Title>
+
+                    <chart:ChartAxisTitle Text="Time (in Minutes)"> </chart:ChartAxisTitle>
+
+                  </chart:CategoryAxis.Title>
+
+                </chart:CategoryAxis>
+
+              </chart:SfChart.PrimaryAxis>
+
+              <chart:SfChart.SecondaryAxis>
+
+                <chart:NumericalAxis>
+
+                  <chart:NumericalAxis.Title>
+
+                    <chart:ChartAxisTitle Text="Age Range"></chart:ChartAxisTitle>
+
+                  </chart:NumericalAxis.Title>
+
+                </chart:NumericalAxis>
+
+              </chart:SfChart.SecondaryAxis>
+
+              --><!--Legends--><!--
+              --><!--<chart:SfChart.Legend>
+
+                  <chart:ChartLegend />
+
+                </chart:SfChart.Legend>--><!--
+
+              <chart:SfChart.Series>
+
+
+                <chart:RangeColumnSeries  ItemsSource="{Binding Data}" XBindingPath="EntryTime" High="Age2" Low="Age1">
+
+                </chart:RangeColumnSeries >
+
+              </chart:SfChart.Series>
+
+            </chart:SfChart>            
+          </StackLayout>-->
+         
           <!--<ctrl:StackedList
               x:Name="SuggestionsList"
               Grid.Row="5"

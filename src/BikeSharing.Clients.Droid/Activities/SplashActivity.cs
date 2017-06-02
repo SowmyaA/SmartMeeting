@@ -7,7 +7,7 @@ using Android.Support.V7.App;
 namespace BikeSharing.Clients.Droid.Activities
 {
     [Activity(
-        Label = "SmartMeeting", 
+        Label = "DELL I", 
         Icon = "@drawable/icon", 
         Theme = "@style/Theme.Splash", 
         MainLauncher = true,

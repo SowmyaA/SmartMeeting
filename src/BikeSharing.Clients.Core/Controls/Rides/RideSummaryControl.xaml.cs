@@ -26,42 +26,62 @@ namespace BikeSharing.Clients.Core.Controls.Rides
             get { return (string)GetValue(SubtitleProperty); }
             set { SetValue(SubtitleProperty, value); }
         }
-                
-        public static readonly BindableProperty FromProperty =
-          BindableProperty.Create("From", typeof(string), typeof(RideSummaryControl), null);
 
-        public string From
+        public static readonly BindableProperty EmailProperty =
+          BindableProperty.Create("Email", typeof(string), typeof(RideSummaryControl), null);
+
+        public string Email
         {
-            get { return (string)GetValue(FromProperty); }
-            set { SetValue(FromProperty, value); }
+            get { return (string)GetValue(EmailProperty); }
+            set { SetValue(EmailProperty, value); }
         }
 
-        public static readonly BindableProperty ToProperty =
-          BindableProperty.Create("To", typeof(string), typeof(RideSummaryControl), null);
+        public static readonly BindableProperty PhoneNumberProperty =
+         BindableProperty.Create("PhoneNumber", typeof(string), typeof(RideSummaryControl), null);
 
-        public string To
+        public string PhoneNumber
         {
-            get { return (string)GetValue(ToProperty); }
-            set { SetValue(ToProperty, value); }
+            get { return (string)GetValue(PhoneNumberProperty); }
+            set { SetValue(PhoneNumberProperty, value); }
         }
 
-        public static readonly BindableProperty DateProperty =
-          BindableProperty.Create("Date", typeof(DateTime), typeof(RideSummaryControl), DateTime.Now);
 
-        public DateTime Date
-        {
-            get { return (DateTime)GetValue(DateProperty); }
-            set { SetValue(DateProperty, value); }
-        }
 
-        public static readonly BindableProperty LocationProperty =
-            BindableProperty.Create("Location", typeof(string), typeof(RideSummaryControl), string.Empty);
+        //public static readonly BindableProperty FromProperty =
+        //  BindableProperty.Create("From", typeof(string), typeof(RideSummaryControl), null);
 
-        public string Location
-        {
-            get { return (string)GetValue(LocationProperty); }
-            set { SetValue(LocationProperty, value); }
-        }
+        //public string From
+        //{
+        //    get { return (string)GetValue(FromProperty); }
+        //    set { SetValue(FromProperty, value); }
+        //}
+
+        //public static readonly BindableProperty ToProperty =
+        //  BindableProperty.Create("To", typeof(string), typeof(RideSummaryControl), null);
+
+        //public string To
+        //{
+        //    get { return (string)GetValue(ToProperty); }
+        //    set { SetValue(ToProperty, value); }
+        //}
+
+        //public static readonly BindableProperty DateProperty =
+        //  BindableProperty.Create("Date", typeof(DateTime), typeof(RideSummaryControl), DateTime.Now);
+
+        //public DateTime Date
+        //{
+        //    get { return (DateTime)GetValue(DateProperty); }
+        //    set { SetValue(DateProperty, value); }
+        //}
+
+        //public static readonly BindableProperty LocationProperty =
+        //    BindableProperty.Create("Location", typeof(string), typeof(RideSummaryControl), string.Empty);
+
+        //public string Location
+        //{
+        //    get { return (string)GetValue(LocationProperty); }
+        //    set { SetValue(LocationProperty, value); }
+        //}
 
         public static readonly BindableProperty FromStationProperty =
             BindableProperty.Create("FromStation", typeof(Station), typeof(RideSummaryControl), null);
@@ -81,23 +101,23 @@ namespace BikeSharing.Clients.Core.Controls.Rides
             set { SetValue(ToStationProperty, value); }
         }
 
-        public static readonly BindableProperty BookingCommandProperty =
-            BindableProperty.Create("BookingCommand", typeof(ICommand), typeof(RideSummaryControl), null);
+        //public static readonly BindableProperty BookingCommandProperty =
+        //    BindableProperty.Create("BookingCommand", typeof(ICommand), typeof(RideSummaryControl), null);
 
-        public ICommand BookingCommand
-        {
-            get { return (ICommand)GetValue(BookingCommandProperty); }
-            set { SetValue(BookingCommandProperty, value); }
-        }
+        //public ICommand BookingCommand
+        //{
+        //    get { return (ICommand)GetValue(BookingCommandProperty); }
+        //    set { SetValue(BookingCommandProperty, value); }
+        //}
 
-        public static readonly BindableProperty IsStationsVisibleProperty =
-          BindableProperty.Create("IsStationsVisible", typeof(bool), typeof(RideSummaryControl), true);
+        //public static readonly BindableProperty IsStationsVisibleProperty =
+        //  BindableProperty.Create("IsStationsVisible", typeof(bool), typeof(RideSummaryControl), true);
 
-        public bool IsStationsVisible
-        {
-            get { return (bool)GetValue(IsStationsVisibleProperty); }
-            set { SetValue(IsStationsVisibleProperty, value); }
-        }
+        //public bool IsStationsVisible
+        //{
+        //    get { return (bool)GetValue(IsStationsVisibleProperty); }
+        //    set { SetValue(IsStationsVisibleProperty, value); }
+        //}
 
         public RideSummaryControl()
         {
@@ -106,8 +126,8 @@ namespace BikeSharing.Clients.Core.Controls.Rides
             if (Device.OS == TargetPlatform.Windows ||
                 Device.OS == TargetPlatform.WinPhone)
             {
-                StationsContainer.WidthRequest = 432;
-                StationsContainer.HorizontalOptions = LayoutOptions.Start;
+                //StationsContainer.WidthRequest = 432;
+               // StationsContainer.HorizontalOptions = LayoutOptions.Start;
             }
         }
 
@@ -122,8 +142,8 @@ namespace BikeSharing.Clients.Core.Controls.Rides
         {
             base.OnBindingContextChanged();
 
-            BookingButton.Margin = Device.Idiom == TargetIdiom.Desktop ? new Thickness(0, 52, 0, 0) : new Thickness(-2, 20, 0, 0);
-            StationsContainer.Margin = Device.Idiom == TargetIdiom.Desktop ? new Thickness(0, 45, 0, 10) : new Thickness(0);
+            //BookingButton.Margin = Device.Idiom == TargetIdiom.Desktop ? new Thickness(0, 52, 0, 0) : new Thickness(-2, 20, 0, 0);
+          //  StationsContainer.Margin = Device.Idiom == TargetIdiom.Desktop ? new Thickness(0, 45, 0, 10) : new Thickness(0);
         }
     }
 }

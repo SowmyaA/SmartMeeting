@@ -7,7 +7,7 @@
              xmlns:animations="clr-namespace:BikeSharing.Clients.Core.Animations;assembly=BikeSharing.Clients.Core"
              xmlns:triggers="clr-namespace:BikeSharing.Clients.Core.Triggers;assembly=BikeSharing.Clients.Core"
              x:Class="BikeSharing.Clients.Core.Pages.EventSummaryPage"
-             Title="Event">
+             Title="Profile">
     <ContentPage.Resources>
         <ResourceDictionary>
             
@@ -64,11 +64,11 @@
                                              Duration="8000" />
             </animations:StoryBoard>
 
-            <animations:StoryBoard x:Key="BuyTicketButtonAnimation"
+            <!--<animations:StoryBoard x:Key="BuyTicketButtonAnimation"
                                    Target="{x:Reference BuyTicketButton}">
                 <animations:FadeToAnimation Opacity="1"
                                             Duration="1500" />
-            </animations:StoryBoard>
+            </animations:StoryBoard>-->
             
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -79,8 +79,8 @@
         <EventTrigger Event="Appearing">
             <triggers:BeginAnimation      
                 Animation="{StaticResource EventBackgroundAnimation}" />
-            <triggers:BeginAnimation
-                Animation="{StaticResource BuyTicketButtonAnimation}" />
+            <!--<triggers:BeginAnimation
+                Animation="{StaticResource BuyTicketButtonAnimation}" />-->
         </EventTrigger>
     </ContentPage.Triggers>
     <Grid>
@@ -96,9 +96,9 @@
             <StackLayout 
                 Padding="5, 15, 5, 5"   
                 Spacing="0">
-                <Button 
+                <!--<Button 
                     x:Name="BuyTicketButton"
-                    Text="Buy Ticket"
+                    Text="Email"
 					          Opacity="0"      
                     BorderRadius="0">
                     <Button.Style>
@@ -108,20 +108,21 @@
                             iOS="{StaticResource BuyTicketStyle}"
                             WinPhone="{StaticResource UwpBuyTicketStyle}"/>
                     </Button.Style>
-                </Button>
+                </Button>-->
                 <ride:RideSummaryControl x:Name="RideSummary"
                     VerticalOptions="FillAndExpand"
-                    Date="{Binding Event.StartTime}"
-                    BookingCommand="{Binding MakeBookingCommand}"
+                                      
                     FromStation="{Binding FromStation}"
                     ToStation="{Binding ToStation}"
-                    Location="{x:Static core:GlobalSettings.City}"
-                    Subtitle="{Binding Event.Venue.Name}"
+                    
+                    Email="{Binding Event.Email}"     
+                    PhoneNumber="{Binding Event.PhoneNumber}"
+                    Subtitle="{Binding Event.Title}"
                     Title="{Binding Event.Name}">
                 </ride:RideSummaryControl>
             </StackLayout>
         </ScrollView>
-        <ActivityIndicator 
+      <ActivityIndicator 
             Color="{StaticResource BrightYellowColor}"
             IsRunning="{Binding IsBusy}"   
             IsVisible="{Binding IsBusy}"

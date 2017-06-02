@@ -123,40 +123,40 @@ namespace BikeSharing.Clients.Core.ViewModels
                 });
             }
 
-            if(Device.OS == TargetPlatform.Android)
-            {
-                MenuItems.Add(new MenuItem
-                {
-                    Title = "New Ride",
-                    MenuItemType = MenuItemType.NewRide,
-                    ViewModelType = typeof(CustomRideViewModel),
-                    IsEnabled = true
-                });
-            }
+            //if(Device.OS == TargetPlatform.Android)
+            //{
+            //    MenuItems.Add(new MenuItem
+            //    {
+            //        Title = "New Ride",
+            //        MenuItemType = MenuItemType.NewRide,
+            //        ViewModelType = typeof(CustomRideViewModel),
+            //        IsEnabled = true
+            //    });
+            //}
 
-            MenuItems.Add(new MenuItem
-            {
-                Title = "My Rides",
-                MenuItemType = MenuItemType.MyRides,
-                ViewModelType = Device.Idiom == TargetIdiom.Desktop ? typeof(UwpMyRidesViewModel) : typeof(MyRidesViewModel),
-                IsEnabled = true
-            });
+            //MenuItems.Add(new MenuItem
+            //{
+            //    Title = "My Rides",
+            //    MenuItemType = MenuItemType.MyRides,
+            //    ViewModelType = Device.Idiom == TargetIdiom.Desktop ? typeof(UwpMyRidesViewModel) : typeof(MyRidesViewModel),
+            //    IsEnabled = true
+            //});
 
-            MenuItems.Add(new MenuItem
-            {
-                Title = "Upcoming ride",
-                MenuItemType = MenuItemType.UpcomingRide,
-                ViewModelType = typeof(BookingViewModel),
-                IsEnabled = Settings.CurrentBookingId != 0
-            });
+            //MenuItems.Add(new MenuItem
+            //{
+            //    Title = "Upcoming ride",
+            //    MenuItemType = MenuItemType.UpcomingRide,
+            //    ViewModelType = typeof(BookingViewModel),
+            //    IsEnabled = Settings.CurrentBookingId != 0
+            //});
 
-            MenuItems.Add(new MenuItem
-            {
-                Title = "Report",
-                MenuItemType = MenuItemType.ReportIncident,
-                ViewModelType = typeof(ReportIncidentViewModel),
-                IsEnabled = Settings.CurrentBookingId != 0
-            });
+            //MenuItems.Add(new MenuItem
+            //{
+            //    Title = "Report",
+            //    MenuItemType = MenuItemType.ReportIncident,
+            //    ViewModelType = typeof(ReportIncidentViewModel),
+            //    IsEnabled = Settings.CurrentBookingId != 0
+            //});
 
             MenuItems.Add(new MenuItem
             {

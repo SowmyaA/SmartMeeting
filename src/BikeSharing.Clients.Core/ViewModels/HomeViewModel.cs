@@ -238,9 +238,9 @@ namespace BikeSharing.Clients.Core.ViewModels
             };
 
             UsageData = new ObservableCollection<Usage>() {
-                new Usage { UsageType="Blocked and Used", Percentage="75" },
-                 new Usage { UsageType="Blocked and Unused", Percentage="10" },
-                  new Usage { UsageType="Not Blocked", Percentage="15" },
+                new Usage { UsageType="Happy", Percentage="75" },
+                 new Usage { UsageType="Laughing", Percentage="10" },
+                  new Usage { UsageType="Sad", Percentage="15" },
             };
 
         }
@@ -332,8 +332,10 @@ namespace BikeSharing.Clients.Core.ViewModels
 
                                 Members.Add(meetingmembers);
                             }
+
                             HashSet<string> Id_Invitees = new HashSet<string>(invitiesObject.Select(s => s.PersonId));
                             var notPresent = attendeesObject.Where(m => !Id_Invitees.Contains(m.PersonId));
+
                             foreach (var person in notPresent)
                             {
                                 if (person.EmpName.ToString().Trim() != "NaN")

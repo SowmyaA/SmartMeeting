@@ -171,7 +171,7 @@ namespace BikeSharing.Clients.Core.Services
 
         private void CreatePageViewModelMappings()
         {
-            _mappings.Add(typeof(CustomRideViewModel), typeof(CustomRidePage));
+        //    _mappings.Add(typeof(CustomRideViewModel), typeof(CustomRidePage));
             _mappings.Add(typeof(EventSummaryViewModel), typeof(EventSummaryPage));
             _mappings.Add(typeof(HomeViewModel), typeof(HomePage));
             _mappings.Add(typeof(LoginViewModel), typeof(LoginPage));
@@ -183,19 +183,19 @@ namespace BikeSharing.Clients.Core.Services
 
                 if (Device.Idiom == TargetIdiom.Desktop)
                 {
-                    _mappings.Add(typeof(UwpMyRidesViewModel), typeof(UwpMyRidesPage));
-                    _mappings.Add(typeof(ProfileViewModel), typeof(UwpProfilePage));
+                   // _mappings.Add(typeof(UwpMyRidesViewModel), typeof(UwpMyRidesPage));
+                   // _mappings.Add(typeof(ProfileViewModel), typeof(UwpProfilePage));
                 }
                 else
                 {
-                    _mappings.Add(typeof(MyRidesViewModel), typeof(MyRidesPage));
+                   // _mappings.Add(typeof(MyRidesViewModel), typeof(MyRidesPage));
                     _mappings.Add(typeof(ProfileViewModel), typeof(ProfilePage));
                 }
             }
             else
             {
                 _mappings.Add(typeof(SignUpViewModel), typeof(SignUpPage));
-                _mappings.Add(typeof(MyRidesViewModel), typeof(MyRidesPage));
+               // _mappings.Add(typeof(MyRidesViewModel), typeof(MyRidesPage));
                 _mappings.Add(typeof(ProfileViewModel), typeof(ProfilePage));
             }
 

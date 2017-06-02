@@ -22,7 +22,10 @@ namespace BikeSharing.Clients.Core.DataServices.Fake
                 StartTime = DateTime.Now,
                 ImagePath = @"sowmya.png",
                 Attendence = @"Off.png",
-                Emoction=@"Smiley.png"
+                Emoction=@"Smiley.png",
+                Email = "sowmya.a2@dell.com",
+                PhoneNumber = "91 804 0027918",
+                Title = "Consultant"
                // ImagePath = "https://connect16test.blob.core.windows.net/imgs/i_nba-match.png"
             },
             new Event
@@ -37,7 +40,10 @@ namespace BikeSharing.Clients.Core.DataServices.Fake
                  //ImagePath = "https://connect16test.blob.core.windows.net/imgs/i_music-ride.png"
                 ImagePath = @"Rajesh.png",
                 Attendence = @"Off.png",
-                Emoction=@"Smiley.png"
+                Emoction=@"Smiley.png",
+                Email = "rajesh.pillai@dell.com",
+                PhoneNumber = "91 804 0027838",
+                Title = "Solutions Architect"
             },
             new Event
             {
@@ -51,7 +57,10 @@ namespace BikeSharing.Clients.Core.DataServices.Fake
                 // ImagePath = "https://connect16test.blob.core.windows.net/imgs/i_music-ride.png"
                 ImagePath = @"Kumar.png",
                  Attendence = @"Off.png",
-                Emoction=@"Smiley1.png"
+                Emoction=@"Smiley1.png",
+                Email = "kumar.krishnamurthy@dell.com",
+                PhoneNumber = "91 894 0027918",
+                Title = "Consultant II"
             },
             new Event
             {
@@ -65,7 +74,10 @@ namespace BikeSharing.Clients.Core.DataServices.Fake
                // ImagePath = "https://connect16test.blob.core.windows.net/imgs/i_music-ride.png"
                 ImagePath = @"Praveen.png",
                  Attendence = @"On.png",
-                Emoction=@"Smiley1.png"
+                Emoction=@"Smiley1.png",
+                Email = "kamath.narasinha@dell.com",
+                PhoneNumber = "91 822 0027668",
+                Title = "Consultant II"
             } 
             
             

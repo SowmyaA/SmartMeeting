@@ -5,9 +5,15 @@
         android:src="@drawable/background"
         android:gravity="fill"/>
   </item>
-  <item>
+  <item>   
+   <!-- 
+     <Label Text="Dell I" Style="{StaticResource TempLabelStyle}" />-->
+   
     <bitmap
-        android:src="@drawable/splash_logo"
+       android:src="@drawable/splash_logo"
         android:gravity="center"/>
+    <bitmap
+      android:src="@drawable/icon"
+       android:gravity="bottom"/>
   </item>
 </layer-list>

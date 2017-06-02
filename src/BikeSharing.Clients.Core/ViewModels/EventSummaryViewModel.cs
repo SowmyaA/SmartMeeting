@@ -68,7 +68,7 @@ namespace BikeSharing.Clients.Core.ViewModels
             }
         }
 
-        public ICommand MakeBookingCommand => new Command(MakeBookingAsync);
+        //public ICommand MakeBookingCommand => new Command(MakeBookingAsync);
 
         public EventSummaryViewModel(IEventsService eventsService, IRidesService ridesService)
         {
@@ -132,40 +132,40 @@ namespace BikeSharing.Clients.Core.ViewModels
             IsBusy = false;
         }
 
-        private BookingViewModel.BookingViewModelNavigationParameter _navParameter;
+        //private BookingViewModel.BookingViewModelNavigationParameter _navParameter;
 
-        private async void MakeBookingAsync(object obj)
-        {
-            IsBusy = true;
+        //private async void MakeBookingAsync(object obj)
+        //{
+        //    IsBusy = true;
 
-            try
-            {
-                Booking booking = await _ridesService.RequestBikeBooking(FromStation, ToStation, Event);
-                MessagingCenter.Send(booking, MessengerKeys.BookingRequested);
+        //    try
+        //    {
+        //        Booking booking = await _ridesService.RequestBikeBooking(FromStation, ToStation, Event);
+        //        MessagingCenter.Send(booking, MessengerKeys.BookingRequested);
 
-                _navParameter = new BookingViewModel.BookingViewModelNavigationParameter
-                {
-                    ShowThanks = true,
-                    BookingId = booking.Id
-                };
+        //        _navParameter = new BookingViewModel.BookingViewModelNavigationParameter
+        //        {
+        //            ShowThanks = true,
+        //            BookingId = booking.Id
+        //        };
 
-                await NavigationService.NavigateToAsync<BookingViewModel>(_navParameter);
-                await NavigationService.RemoveLastFromBackStackAsync();
-            }
-            catch (NoAvailableBikesException)
-            {
-                await DialogService.ShowAlertAsync("We are sorry, there are no bikes in origin station", "No bike available", "Ok");
-            }
-            catch (Exception ex) when (ex is WebException || ex is HttpRequestException)
-            {
-                await DialogService.ShowAlertAsync("Communication error", "Error", "Ok");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error loading data in: {ex}");
-            }
+        //        await NavigationService.NavigateToAsync<BookingViewModel>(_navParameter);
+        //        await NavigationService.RemoveLastFromBackStackAsync();
+        //    }
+        //    catch (NoAvailableBikesException)
+        //    {
+        //        await DialogService.ShowAlertAsync("We are sorry, there are no bikes in origin station", "No bike available", "Ok");
+        //    }
+        //    catch (Exception ex) when (ex is WebException || ex is HttpRequestException)
+        //    {
+        //        await DialogService.ShowAlertAsync("Communication error", "Error", "Ok");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Error loading data in: {ex}");
+        //    }
 
-            IsBusy = false;
-        }
+        //    IsBusy = false;
+        //}
     }
 }
